@@ -9,3 +9,72 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model Assisted {
+  id             Int     @id @default(autoincrement())
+  name           String
+  social_name    String?
+  mother_name    String?
+  father_name    String?
+  sex            String?
+  birth_data     String?
+  nationality    String?
+  phone_number   String?
+  city_residence String?
+  rg             String?
+  org_e          String?
+  uf             String?
+  dt_e           String?
+  cpf            String?
+  reservist      String?
+  work_wallet    String?
+  birth_cert     String?
+  nis            String?
+  benefits       String?
+  situation      String
+  schooling      String?
+  relactory      String
+
+  familiar Familiar[]
+
+  evolution Evolution[]
+}
+
+model Familiar {
+  id           Int       @id @default(autoincrement())
+  name         String
+  phone_number String?
+  assisted     Assisted? @relation(fields: [assistedId], references: [id])
+  assistedId   Int?
+}
+
+model Evolution {
+  id          Int       @id @default(autoincrement())
+  data        String
+  description String
+  assisted    Assisted? @relation(fields: [assistedId], references: [id])
+  assistedId  Int?
+
+  rel RelEvolFunc[] 
+}
+
+model Functionary {
+  id         Int    @id @default(autoincrement())
+  name       String
+  cpf        String
+  occupation String
+
+  rel RelEvolFunc[] 
+}
+
+model RelEvolFunc {
+  id Int @id @default(autoincrement())
+
+  evolution    Evolution? @relation(fields: [evolutionId], references: [id])
+  evolutionId Int?
+
+  functionary    Functionary? @relation(fields: [functionaryId], references: [id])
+  functionaryId Int?
+}
+
+
