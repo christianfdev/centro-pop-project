@@ -43,6 +43,7 @@ CREATE TABLE `Evolution` (
     `data` VARCHAR(191) NOT NULL,
     `description` VARCHAR(191) NOT NULL,
     `assistedId` INTEGER NULL,
+    `functionaryId` INTEGER NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -57,15 +58,6 @@ CREATE TABLE `Functionary` (
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
--- CreateTable
-CREATE TABLE `RelEvolFunc` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `evolutionId` INTEGER NULL,
-    `functionaryId` INTEGER NULL,
-
-    PRIMARY KEY (`id`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
 -- AddForeignKey
 ALTER TABLE `Familiar` ADD CONSTRAINT `Familiar_assistedId_fkey` FOREIGN KEY (`assistedId`) REFERENCES `Assisted`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
@@ -73,7 +65,4 @@ ALTER TABLE `Familiar` ADD CONSTRAINT `Familiar_assistedId_fkey` FOREIGN KEY (`a
 ALTER TABLE `Evolution` ADD CONSTRAINT `Evolution_assistedId_fkey` FOREIGN KEY (`assistedId`) REFERENCES `Assisted`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `RelEvolFunc` ADD CONSTRAINT `RelEvolFunc_evolutionId_fkey` FOREIGN KEY (`evolutionId`) REFERENCES `Evolution`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `RelEvolFunc` ADD CONSTRAINT `RelEvolFunc_functionaryId_fkey` FOREIGN KEY (`functionaryId`) REFERENCES `Functionary`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `Evolution` ADD CONSTRAINT `Evolution_functionaryId_fkey` FOREIGN KEY (`functionaryId`) REFERENCES `Functionary`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;

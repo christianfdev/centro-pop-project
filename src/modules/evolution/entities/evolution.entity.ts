@@ -5,5 +5,5 @@ export class Evolution implements Prisma.EvolutionUncheckedCreateInput{
   data: string;
   description: string;
   assistedId?: number;
-  rel?: Prisma.RelEvolFuncUncheckedCreateNestedManyWithoutEvolutionInput;
+  functionaryId?: number;
 }

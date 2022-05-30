@@ -55,7 +55,9 @@ model Evolution {
   assisted    Assisted? @relation(fields: [assistedId], references: [id])
   assistedId  Int?
 
-  rel RelEvolFunc[] 
+  functionary Functionary? @relation(fields: [functionaryId], references: [id])
+  functionaryId Int?
+
 }
 
 model Functionary {
@@ -63,18 +65,9 @@ model Functionary {
   name       String
   cpf        String
   occupation String
+  evolutions Evolution[]
 
-  rel RelEvolFunc[] 
 }
 
-model RelEvolFunc {
-  id Int @id @default(autoincrement())
-
-  evolution    Evolution? @relation(fields: [evolutionId], references: [id])
-  evolutionId Int?
-
-  functionary    Functionary? @relation(fields: [functionaryId], references: [id])
-  functionaryId Int?
-}
 
 

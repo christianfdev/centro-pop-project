@@ -5,5 +5,4 @@ export class CreateFunctionaryDto extends Functionary{
   name: string;
   cpf: string;
   occupation: string;
-  rel?: Prisma.RelEvolFuncUncheckedCreateNestedManyWithoutFunctionaryInput;
 }

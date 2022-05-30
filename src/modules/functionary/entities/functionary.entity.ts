@@ -5,5 +5,4 @@ export class Functionary implements Prisma.FunctionaryUncheckedCreateInput{
   name: string;
   cpf: string;
   occupation: string;
-  rel?: Prisma.RelEvolFuncUncheckedCreateNestedManyWithoutFunctionaryInput;
 }

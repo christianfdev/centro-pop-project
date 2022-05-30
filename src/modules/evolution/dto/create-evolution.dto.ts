@@ -5,5 +5,6 @@ export class CreateEvolutionDto extends Evolution{
   data: string;
   description: string;
   assistedId?: number;
-  rel: Prisma.RelEvolFuncUncheckedCreateNestedManyWithoutEvolutionInput;
+  functionaryId?: number;
+  
 }
