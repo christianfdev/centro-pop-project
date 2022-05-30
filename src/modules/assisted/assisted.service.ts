@@ -12,6 +12,8 @@ export class AssistedService {
     return this.prisma.assisted.create({
       data,
     });
+
+
   }
 
   findAll() {

@@ -22,7 +22,7 @@ CREATE TABLE `Assisted` (
     `benefits` VARCHAR(191) NULL,
     `situation` VARCHAR(191) NOT NULL,
     `schooling` VARCHAR(191) NULL,
-    `relactory` VARCHAR(191) NOT NULL,
+    `relactory` LONGTEXT NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
