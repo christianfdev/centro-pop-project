@@ -18,6 +18,15 @@ export class EvolutionService {
     return this.prisma.evolution.findMany();
   }
 
+  findAllByAssisted(assistedId: number){
+
+    return this.prisma.evolution.findMany({
+
+      where: { assistedId: assistedId },
+
+    })
+  }
+
   findOne(id: number) {
     return this.prisma.evolution.findUnique({
       where: { id },
