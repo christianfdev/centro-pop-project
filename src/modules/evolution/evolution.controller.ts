@@ -17,9 +17,14 @@ export class EvolutionController {
     return this.evolutionService.findAll();
   } */
 
-  @Get(':assistedId')
+  @Get('assisted/:assistedId')
   findAllByAssisted(@Param('assistedId') assistedId: string) {
     return this.evolutionService.findAllByAssisted(+assistedId);
+  }
+
+  @Get('functionary/:functionaryId')
+  findAllByFunctionary(@Param('functionaryId') functionaryId: string) {
+    return this.evolutionService.findAllByFunctionary(+functionaryId);
   }
 
 /* 

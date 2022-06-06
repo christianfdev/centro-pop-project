@@ -27,6 +27,15 @@ export class EvolutionService {
     })
   }
 
+  findAllByFunctionary(functionaryId: number){
+
+    return this.prisma.evolution.findMany({
+
+      where: { functionaryId: functionaryId },
+
+    })
+  }
+
   findOne(id: number) {
     return this.prisma.evolution.findUnique({
       where: { id },
