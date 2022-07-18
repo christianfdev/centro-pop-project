@@ -19,20 +19,14 @@ export class EvolutionService {
   }
 
   findAllByAssisted(assistedId: number){
-
     return this.prisma.evolution.findMany({
-
       where: { assistedId: assistedId },
-
     })
   }
 
-  findAllByFunctionary(functionaryId: number){
-
+  findAllByUser(userId: number){
     return this.prisma.evolution.findMany({
-
-      where: { functionaryId: functionaryId },
-
+      where: { userId: userId },
     })
   }
 

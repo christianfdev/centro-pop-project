@@ -1,10 +1,18 @@
 import { Evolution } from '../entities/evolution.entity';
-import { Prisma } from '@prisma/client';
+import { IsNumber, IsString } from 'class-validator';
 
 export class CreateEvolutionDto extends Evolution{
+  
+  @IsString()
   data: string;
+
+  @IsString()
   description: string;
-  assistedId?: number;
-  functionaryId?: number;
+
+  @IsNumber()
+  assistedId: number;
+
+  @IsNumber()
+  userId: number;
   
 }

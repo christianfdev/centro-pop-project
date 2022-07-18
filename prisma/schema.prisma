@@ -55,19 +55,23 @@ model Evolution {
   assisted    Assisted? @relation(fields: [assistedId], references: [id])
   assistedId  Int?
 
-  functionary Functionary? @relation(fields: [functionaryId], references: [id])
-  functionaryId Int?
+  user User? @relation(fields: [userId], references: [id])
+  userId Int?
 
 }
 
-model Functionary {
-  id         Int    @id @default(autoincrement())
+
+
+model User {
+  id Int @id @default(autoincrement())
+
+  username    String @unique
+  password   String
+
   name       String
   cpf        String
-  occupation String
+  assignment String
   evolutions Evolution[]
-
 }
-
 
 
