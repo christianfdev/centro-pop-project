@@ -23,5 +23,8 @@ export class CreateUserDto extends User {
 
   @IsString()
   cpf: string;
+
+  @IsString()
+  assignment: string;
   
 }
