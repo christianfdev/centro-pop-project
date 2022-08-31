@@ -44,6 +44,7 @@ model Familiar {
   id           Int       @id @default(autoincrement())
   name         String
   phone_number String?
+  
   assisted     Assisted? @relation(fields: [assistedId], references: [id])
   assistedId   Int?
 }
@@ -51,7 +52,11 @@ model Familiar {
 model Evolution {
   id          Int       @id @default(autoincrement())
   data        String
+  demand      String
   description String
+  status String @default("CONCLUIDO")
+  quantity Int @default(1)
+
   assisted    Assisted? @relation(fields: [assistedId], references: [id])
   assistedId  Int?
 
@@ -71,6 +76,7 @@ model User {
   name       String
   cpf        String
   assignment String
+
   evolutions Evolution[]
 }
 

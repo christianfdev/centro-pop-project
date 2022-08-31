@@ -24,6 +24,12 @@ export class EvolutionController {
     return this.evolutionService.findAllByAssisted(+assistedId);
   }
 
+  @Assignment(UserAssignment.ASSISTENTE)
+  @Get('demands')
+  findAllForAssistent() {
+    return this.evolutionService.findAllForAssistent();
+  }
+
   @Assignment(UserAssignment.ORIENTADOR)
   @Get('user/:userId')
   findAllByUser(@Param('userId') userId: string) {

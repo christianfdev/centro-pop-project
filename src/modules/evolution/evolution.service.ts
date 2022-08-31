@@ -18,6 +18,21 @@ export class EvolutionService {
     return this.prisma.evolution.findMany();
   }
 
+  findAllForAssistent() {
+    return this.prisma.evolution.findMany({
+      where: {
+        OR: [
+          {
+            demand: 'AUXÍLIO'
+          },
+          {
+            demand: 'CESTA BÁSICA'
+          }
+        ]
+      }
+    })
+  }
+
   findAllByAssisted(assistedId: number){
     return this.prisma.evolution.findMany({
       where: { assistedId: assistedId },

@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { Assignment } from '../auth/decorators/assignment.decorator';
+import { IsPublic } from '../auth/decorators/is-public.decorator';
 import { AssignmentGuard } from '../auth/guards/assignment.guard';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -11,9 +12,10 @@ import { UserService } from './user.service';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @UseGuards(JwtAuthGuard, AssignmentGuard)
-  @Assignment(UserAssignment.ADMIN)
+  @UseGuards(JwtAuthGuard, /*AssignmentGuard*/)
+  //@Assignment(UserAssignment.ADMIN)
   @UseGuards(JwtAuthGuard)
+  @IsPublic()
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
