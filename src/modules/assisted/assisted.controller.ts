@@ -13,31 +13,31 @@ import { UpdateAssistedDto } from './dto/update-assisted.dto';
 export class AssistedController {
   constructor(private readonly assistedService: AssistedService) {}
 
-  @Assignment(UserAssignment.ORIENTADOR)
+  @Assignment([UserAssignment.ASSISTENTE,UserAssignment.ORIENTADOR])
   @Get()
   findAll() {
     return this.assistedService.findAll();
   }
 
-  @Assignment(UserAssignment.ORIENTADOR)
+  @Assignment([UserAssignment.ORIENTADOR, UserAssignment.ASSISTENTE])
   @Post()
   create(@Body() createAssistedDto: CreateAssistedDto) {
     return this.assistedService.create(createAssistedDto);
   }
 
-  @Assignment(UserAssignment.ORIENTADOR)
+  @Assignment([UserAssignment.ORIENTADOR, UserAssignment.ASSISTENTE])
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.assistedService.findOne(+id);
   }
 
-  @Assignment(UserAssignment.ORIENTADOR)
+  @Assignment([UserAssignment.ORIENTADOR, UserAssignment.ASSISTENTE])
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateAssistedDto: UpdateAssistedDto) {
     return this.assistedService.update(+id, updateAssistedDto);
   }
 
-  @Assignment(UserAssignment.ORIENTADOR)
+  @Assignment([UserAssignment.ORIENTADOR, UserAssignment.ASSISTENTE])
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.assistedService.remove(+id);

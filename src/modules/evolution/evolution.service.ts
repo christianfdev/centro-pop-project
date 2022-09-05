@@ -27,7 +27,10 @@ export class EvolutionService {
           },
           {
             demand: 'CESTA BÁSICA'
-          }
+          },
+          {
+            demand: 'DOCUMENTO'
+          },
         ]
       }
     })

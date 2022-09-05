@@ -12,37 +12,37 @@ import { UserAssignment } from '../user/user-assignment.enum';
 export class EvolutionController {
   constructor(private readonly evolutionService: EvolutionService) {}
 
-  @Assignment(UserAssignment.ORIENTADOR)
+  @Assignment([UserAssignment.ORIENTADOR, UserAssignment.ASSISTENTE])
   @Post()
   create(@Body() createEvolutionDto: CreateEvolutionDto) {
     return this.evolutionService.create(createEvolutionDto);
   }
 
-  @Assignment(UserAssignment.ORIENTADOR)
+  @Assignment([UserAssignment.ORIENTADOR, UserAssignment.ASSISTENTE])
   @Get('assisted/:assistedId')
   findAllByAssisted(@Param('assistedId') assistedId: string) {
     return this.evolutionService.findAllByAssisted(+assistedId);
   }
 
-  @Assignment(UserAssignment.ASSISTENTE)
+  @Assignment([UserAssignment.ASSISTENTE])
   @Get('demands')
   findAllForAssistent() {
     return this.evolutionService.findAllForAssistent();
   }
 
-  @Assignment(UserAssignment.ORIENTADOR)
+  @Assignment([UserAssignment.ORIENTADOR, UserAssignment.ASSISTENTE])
   @Get('user/:userId')
   findAllByUser(@Param('userId') userId: string) {
     return this.evolutionService.findAllByUser(+userId);
   }
 
-  @Assignment(UserAssignment.ORIENTADOR)
+  @Assignment([UserAssignment.ORIENTADOR, UserAssignment.ASSISTENTE])
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateEvolutionDto: UpdateEvolutionDto) {
     return this.evolutionService.update(+id, updateEvolutionDto);
   }
 
-  @Assignment(UserAssignment.ORIENTADOR)
+  @Assignment([UserAssignment.ORIENTADOR, UserAssignment.ASSISTENTE])
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.evolutionService.remove(+id);

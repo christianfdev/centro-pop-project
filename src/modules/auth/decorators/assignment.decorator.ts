@@ -1,3 +1,3 @@
 import { SetMetadata } from '@nestjs/common';
 
-export const Assignment = (assignment: string) => SetMetadata('assignment', assignment);
+export const Assignment = (assignment: string[]) => SetMetadata('assignment', assignment);

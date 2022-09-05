@@ -31,7 +31,7 @@ import { UserAssignment } from '../user/user-assignment.enum';
 
 
     @Get('/me')
-    @Assignment(UserAssignment.ORIENTADOR)
+    @Assignment([UserAssignment.ORIENTADOR, UserAssignment.ASSISTENTE])
     @UseGuards(JwtAuthGuard)
     getMe(@Req() req): User {
     return req.user;

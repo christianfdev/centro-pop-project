@@ -13,7 +13,7 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @UseGuards(JwtAuthGuard, /*AssignmentGuard*/)
-  //@Assignment(UserAssignment.ADMIN)
+  //@Assignment(UserAssignment.ADMINISTRADOR)
   @UseGuards(JwtAuthGuard)
   @IsPublic()
   @Post()
@@ -28,7 +28,7 @@ export class UserController {
 
 
   //Editar GET, está retornando informações além do que deve
-  @Assignment(UserAssignment.ORIENTADOR)
+  @Assignment([UserAssignment.ADMINISTRADOR])
   @Get(':id')
   findOne(@Param('id') id: string) {
   return this.userService.findOne(+id);
