@@ -32,19 +32,29 @@ export class EvolutionService {
             demand: 'DOCUMENTO'
           },
         ]
+      },
+      include: {
+        assisted: true,
       }
     })
   }
 
   findAllByAssisted(assistedId: number){
     return this.prisma.evolution.findMany({
-      where: { assistedId: assistedId },
+      where: { 
+        assistedId: assistedId
+      }
     })
   }
 
   findAllByUser(userId: number){
     return this.prisma.evolution.findMany({
-      where: { userId: userId },
+      where: { 
+        userId: userId 
+      },
+      include: {
+        assisted: true,
+      }
     })
   }
 
