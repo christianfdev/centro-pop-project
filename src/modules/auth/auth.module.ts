@@ -14,7 +14,7 @@ import { LoginValidationMiddleware } from './middlewares/login-validation.middle
     PassportModule,
     JwtModule.register({
       secret: process.env.JWT_SECRET,
-      signOptions: { expiresIn: '360s' },
+      signOptions: { expiresIn: '10000s' }, //Valor inserido enquanto não implementado o Refresh Token
       
     }),
   ],
