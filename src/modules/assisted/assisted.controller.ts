@@ -24,12 +24,21 @@ export class AssistedController {
   create(@Body() createAssistedDto: CreateAssistedDto) {
     return this.assistedService.create(createAssistedDto);
   }
-
+  
   @Assignment([UserAssignment.ORIENTADOR, UserAssignment.ASSISTENTE])
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.assistedService.findOne(+id);
   }
+  
+  @Assignment([UserAssignment.ORIENTADOR, UserAssignment.ASSISTENTE])
+  @Get('/notid/:id')
+  findOneNotId(@Param('id') id: string) {
+    return this.assistedService.findOneNotId(+id);
+  }
+
+
+  
 
   @Assignment([UserAssignment.ORIENTADOR, UserAssignment.ASSISTENTE])
   @Patch(':id')
