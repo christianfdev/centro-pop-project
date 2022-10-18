@@ -18,8 +18,8 @@ export class AssistedService {
     return this.prisma.assisted.findMany({
       include: {
         evolution: true
-      }
-    });
+      },
+    })
   }
 
   findOne(id: number) {
