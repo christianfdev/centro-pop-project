@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE "Assisted" (
-    "id" SERIAL NOT NULL,
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL,
     "social_name" TEXT,
     "mother_name" TEXT,
@@ -22,24 +22,21 @@ CREATE TABLE "Assisted" (
     "benefits" TEXT,
     "situation" TEXT NOT NULL,
     "schooling" TEXT,
-    "relactory" TEXT NOT NULL,
-
-    CONSTRAINT "Assisted_pkey" PRIMARY KEY ("id")
+    "relactory" TEXT NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "Familiar" (
-    "id" SERIAL NOT NULL,
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL,
     "phone_number" TEXT,
     "assistedId" INTEGER,
-
-    CONSTRAINT "Familiar_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Familiar_assistedId_fkey" FOREIGN KEY ("assistedId") REFERENCES "Assisted" ("id") ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 -- CreateTable
 CREATE TABLE "Evolution" (
-    "id" SERIAL NOT NULL,
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "data" TEXT NOT NULL,
     "demand" TEXT NOT NULL,
     "description" TEXT NOT NULL,
@@ -47,30 +44,19 @@ CREATE TABLE "Evolution" (
     "quantity" INTEGER NOT NULL DEFAULT 1,
     "assistedId" INTEGER,
     "userId" INTEGER,
-
-    CONSTRAINT "Evolution_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Evolution_assistedId_fkey" FOREIGN KEY ("assistedId") REFERENCES "Assisted" ("id") ON DELETE SET NULL ON UPDATE CASCADE,
+    CONSTRAINT "Evolution_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 -- CreateTable
 CREATE TABLE "User" (
-    "id" SERIAL NOT NULL,
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "username" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "cpf" TEXT NOT NULL,
-    "assignment" TEXT NOT NULL,
-
-    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+    "assignment" TEXT NOT NULL
 );
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_username_key" ON "User"("username");
-
--- AddForeignKey
-ALTER TABLE "Familiar" ADD CONSTRAINT "Familiar_assistedId_fkey" FOREIGN KEY ("assistedId") REFERENCES "Assisted"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "Evolution" ADD CONSTRAINT "Evolution_assistedId_fkey" FOREIGN KEY ("assistedId") REFERENCES "Assisted"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "Evolution" ADD CONSTRAINT "Evolution_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
