@@ -26,6 +26,12 @@ export class UserController {
   return this.userService.findAll();
   }
 
+  @IsPublic()
+  @Get('/info/:id')
+  findInfo(@Param('id') id:string){
+    return this.userService.findInfo(+id);
+  }
+
 
   //Editar GET, está retornando informações além do que deve
   @Assignment([UserAssignment.ADMINISTRADOR])
