@@ -1,4 +1,4 @@
-# PROJETO POP+
+# PROJETO POP+ (API atualmente está offline, até retornar a realizar as mudanças plajenadas)
 
 MOTIVAÇÃO
 
