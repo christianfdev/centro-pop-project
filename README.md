@@ -10,7 +10,7 @@ A ideia inicial, e até onde ele foi implementado até o momento, abrange o cada
 
 TECNOLOGIAS UTILIZADAS
 
-- ReactJS
+- NestJS
 - TypeScript
 
 ---
